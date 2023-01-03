@@ -1,0 +1,22 @@
+image: mcr.microsoft.com/dotnet/sdk:6.0
+
+stages:
+  - build
+  - test
+
+before_script:
+  - "dotnet restore"
+
+Build:
+  stage: build
+  script:
+    - "dotnet build"
+  only:
+    - pushes
+
+Tests:
+  stage: test
+  script:
+    - "dotnet test"
+  only:
+    - pushes

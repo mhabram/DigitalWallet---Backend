@@ -1,0 +1,9 @@
+@host=https://localhost:7031
+
+POST {{host}}/api/authentication/signIn
+Content-Type: application/json
+
+{
+  "Email": "dawidkowalski@domail.com",
+  "Password": "SomeHardP@$w0rd"
+}
