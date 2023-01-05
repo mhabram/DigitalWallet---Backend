@@ -43,7 +43,7 @@ public class UserQueriesRepository : IUserQueriesRepository
             throw new SignInCommandException();
 
         return new BaseUser(
-            user.Id,
+            Guid.NewGuid(),
             user.Email,
             user.UserName);
     }

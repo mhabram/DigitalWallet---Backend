@@ -1,45 +1,44 @@
 ﻿using DigitalWallet.Domain.AggregateModels.InvestmentWalletAggregate.ValueObjects;
-using DigitalWallet.Domain.AggregateModels.WalletAggregate.ValueObjects;
 using DigitalWallet.Domain.Common.ValueObjects;
 
 namespace DigitalWallet.Domain.AggregateModels.InvestmentWalletAggregate.Entities;
 
-public sealed class InvestmentHistory
+public sealed class InvestmentWalletHistory
 {
-    public InvestmentHistoryId InvestmentHistoryId { get; private set; }
+    public InvestmentWalletHistoryId Id { get; private set; }
     public double Amount { get; private set; }
     public string Currency { get; private set; }
     public bool Purchase { get; private set; }
-    public WalletId WalletId { get; private set; }
+    public InvestmentWalletId InvestmentWalletId { get; private set; }
 
     public DateTime Created { get; private set; }
     public DateTime? Modified { get; private set; }
 
-    private InvestmentHistory(
-        InvestmentHistoryId investmentHistoryId,
+    private InvestmentWalletHistory(
+        InvestmentWalletHistoryId id,
         double amount,
         string currency,
         bool purchase,
-        WalletId walletId)
+        InvestmentWalletId investmentWalletId)
     {
-        InvestmentHistoryId = investmentHistoryId;
+        Id = id;
         Amount = amount;
         Currency = currency;
         Purchase = purchase;
-        WalletId = walletId;
+        InvestmentWalletId = investmentWalletId;
     }
 
-    public static InvestmentHistory Create(
+    public static InvestmentWalletHistory Create(
         Fund fund,
         bool purchase,
-        WalletId walletId)
+        InvestmentWalletId investmentWalletId)
     {
         return new(
-            InvestmentHistoryId.CreateUnique(),
+            InvestmentWalletHistoryId.CreateUnique(),
             fund.Amount,
             fund.Currency,
             purchase,
-            walletId
+            investmentWalletId
         );
     }
 }

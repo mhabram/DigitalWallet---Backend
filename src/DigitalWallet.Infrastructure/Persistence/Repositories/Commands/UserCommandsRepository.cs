@@ -26,7 +26,6 @@ public class UserCommandsRepository : IUserCommandsRepository
     {
         var applicationUser = new ApplicationUser
         {
-            Id = user.Id,
             UserName = user.UserName,
             Email = user.Email,
             PhoneNumber = user.PhoneNumber

@@ -10,27 +10,28 @@ namespace DigitalWallet.Domain.AggregateModels.InvestmentWalletAggregate;
 public sealed class InvestmentWallet : IAuditableEntity
 {
     private readonly List<InvestmentId> _investmentIds = new();
-    private readonly List<InvestmentHistory> _investmentHistories = new();
+    private readonly List<InvestmentWalletHistory> _investmentWalletHistories = new();
 
-    public InvestmentWalletId InvestmentWalletId { get; private set; }
+    public InvestmentWalletId Id { get; private set; }
     public string Name { get; private set; }
     public double Balance { get; private set; }
     public string Currency { get; private set; }
     public WalletId WalletId { get; private set; }
 
     public IReadOnlyList<InvestmentId> InvestmentIds => _investmentIds.AsReadOnly();
-    public IReadOnlyList<InvestmentHistory> InvestmentHistories => _investmentHistories.AsReadOnly();
+    public IReadOnlyList<InvestmentWalletHistory> InvestmentWalletHistories => _investmentWalletHistories.AsReadOnly();
 
     public DateTime Created { get; private set; }
     public DateTime? Modified { get; private set; }
 
     private InvestmentWallet(
-        InvestmentWalletId investmentWalletId,
+        InvestmentWalletId id,
         string name,
         double balance,
         string currency,
         WalletId walletId)
     {
+        Id = id;
         Name = name;
         Balance = balance;
         Currency = currency;
@@ -53,16 +54,16 @@ public sealed class InvestmentWallet : IAuditableEntity
 
     public void AddInvestment(Investment investment)
     {
-        _investmentIds.Add(investment.InvestmentId);
+        _investmentIds.Add(investment.Id);
     }
 
     public void RemoveInvestment(Investment investment)
     {
-        _investmentIds.Remove(investment.InvestmentId);
+        _investmentIds.Remove(investment.Id);
     }
 
-    public void AddInvestmentHistory(InvestmentHistory investmentHistory)
+    public void AddInvestmentHistory(InvestmentWalletHistory investmentHistory)
     {
-        _investmentHistories.Add(investmentHistory);
+        _investmentWalletHistories.Add(investmentHistory);
     }
 }

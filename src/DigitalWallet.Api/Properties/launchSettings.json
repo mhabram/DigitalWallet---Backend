@@ -30,7 +30,7 @@
         "SQ_DB_PORT": "5432",
         "SQ_DB_HOST": "localhost",
         "SQ_DB_NAME": "DigitalWallet",
-        "SQ_DB_USER": "postgre",
+        "SQ_DB_USER": "postgres",
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
