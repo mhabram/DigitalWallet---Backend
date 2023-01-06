@@ -6,7 +6,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace DigitalWallet.Infrastructure.Persistence.Migrations.Identity
 {
-    public partial class InitialMigration : Migration
+    public partial class IdentityContext : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

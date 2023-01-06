@@ -2,16 +2,16 @@
 
 namespace DigitalWallet.Domain.AggregateModels.InvestmentWalletAggregate.ValueObjects;
 
-public sealed class InvestmentHistoryId : ValueObject
+public sealed class InvestmentWalletHistoryId : ValueObject
 {
     public Guid Value { get; private set; }
 
-    private InvestmentHistoryId(Guid value)
+    private InvestmentWalletHistoryId(Guid value)
     {
         Value = value;
     }
 
-    public static InvestmentHistoryId CreateUnique()
+    public static InvestmentWalletHistoryId CreateUnique()
     {
         return new(Guid.NewGuid());
     }

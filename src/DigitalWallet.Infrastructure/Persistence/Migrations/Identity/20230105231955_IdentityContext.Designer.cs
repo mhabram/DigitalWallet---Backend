@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace DigitalWallet.Infrastructure.Persistence.Migrations.Identity
 {
     [DbContext(typeof(ApplicationIdentityDbContext))]
-    [Migration("20221016102448_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20230105231955_IdentityContext")]
+    partial class IdentityContext
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

@@ -1,8 +1,8 @@
-using DigitalWallet.Domain.Common;
-using Microsoft.AspNetCore.Identity;
+using DigitalWallet.Domain.AggregateModels.UserAggregate.ValueObjects;
+using DigitalWallet.Infrastructure.Identity.Models;
 
 namespace DigitalWallet.Infrastructure.Identity;
 
-public class ApplicationUser : IdentityUser<Guid>, IUser
+public class ApplicationUser : User<Guid, UserId>
 {
 }

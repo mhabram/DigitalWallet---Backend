@@ -6,7 +6,7 @@ namespace DigitalWallet.Domain.AggregateModels.WalletAggregate.Entities;
 
 public sealed class WalletHistory : IAuditableEntity
 {
-    public WalletHistoryId WalletHistoryId { get; private set; }
+    public WalletHistoryId Id { get; private set; }
     public double Amount { get; private set; }
     public string Currency { get; private set; }
     public bool Deposit { get; private set; }
@@ -16,13 +16,13 @@ public sealed class WalletHistory : IAuditableEntity
     public DateTime? Modified { get; private set; }
 
     private WalletHistory(
-        WalletHistoryId walletHistoryId,
+        WalletHistoryId id,
         double amount,
         string currency,
         bool deposit,
         WalletId walletId)
     {
-        WalletHistoryId = walletHistoryId;
+        Id = id;
         Currency = currency;
         Amount = amount;
         Deposit = deposit;

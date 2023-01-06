@@ -1,5 +1,10 @@
 using System.Reflection;
 using DigitalWallet.Application.Common.Interfaces;
+using DigitalWallet.Domain.AggregateModels.InvestmentAggregate;
+using DigitalWallet.Domain.AggregateModels.InvestmentWalletAggregate;
+using DigitalWallet.Domain.AggregateModels.InvestmentWalletAggregate.Entities;
+using DigitalWallet.Domain.AggregateModels.WalletAggregate;
+using DigitalWallet.Domain.AggregateModels.WalletAggregate.Entities;
 using DigitalWallet.Domain.Entities;
 using DigitalWallet.Infrastructure.Common;
 using DigitalWallet.Infrastructure.Common.Constants;
@@ -24,7 +29,13 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
         _auditableEntitySaveChangesInterceptor = auditableEntitySaveChangesInterceptor;
     }
 
-    public DbSet<Person> Persons => Set<Person>();
+    public DbSet<Investment> Investments => base.Set<Investment>();
+    public DbSet<Wallet> Wallets => base.Set<Wallet>();
+    public DbSet<WalletHistory> WalletHistories => Set<WalletHistory>();
+    public DbSet<InvestmentWalletHistory> InvestmentWalletHistories => Set<InvestmentWalletHistory>();
+    public DbSet<InvestmentWallet> InvestmentWallets => Set<InvestmentWallet>();
+
+    public DbSet<Person> Persons => Set<Person>(); // it's going to be deleted in the future
 
     protected override void OnModelCreating(ModelBuilder builder)
     {

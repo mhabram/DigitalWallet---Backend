@@ -11,27 +11,27 @@ public sealed class Wallet : IAuditableEntity
 {
     private static readonly double _amount = 0.0;
 
-    private readonly List<WalletHistoryId> _paymentHistoryIds = new();
+    private readonly List<WalletHistoryId> _walletHistoryIds = new();
     private readonly List<InvestmentWalletId> _investmentWalletIds = new();
 
-    public WalletId WalletId { get; private set; }
+    public WalletId Id { get; private set; }
     public double Balance { get; private set; }
     public string Currency { get; private set; }
     public UserId UserId { get; private set; }
 
-    public IReadOnlyCollection<WalletHistoryId> PaymentHistoryIds => _paymentHistoryIds.AsReadOnly();
+    public IReadOnlyCollection<WalletHistoryId> WalletHistoryIds => _walletHistoryIds.AsReadOnly();
     public IReadOnlyCollection<InvestmentWalletId> InvestmentWalletIds => _investmentWalletIds.AsReadOnly();
 
     public DateTime Created { get; private set; }
     public DateTime? Modified { get; private set; }
 
     private Wallet(
-        WalletId walletId,
+        WalletId id,
         double balance,
         string currency,
         UserId userId)
     {
-        WalletId = walletId;
+        Id = id;
         Balance = balance;
         Currency = currency;
         UserId = userId;
@@ -66,11 +66,11 @@ public sealed class Wallet : IAuditableEntity
 
     public void AddInvestmentWallet(InvestmentWallet investmentWallet)
     {
-        _investmentWalletIds.Add(investmentWallet.InvestmentWalletId);
+        _investmentWalletIds.Add(investmentWallet.Id);
     }
 
     public void RemoveInvestmentWallet(InvestmentWallet investmentWallet)
     {
-        _investmentWalletIds.Remove(investmentWallet.InvestmentWalletId);
+        _investmentWalletIds.Remove(investmentWallet.Id);
     }
 }
